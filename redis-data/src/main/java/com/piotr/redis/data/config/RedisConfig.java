@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisClientConfiguration.JedisClientConfigurationBuilder;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
@@ -29,11 +28,11 @@ public class RedisConfig {
     redisStandaloneConfig.setPort(port);
     redisStandaloneConfig.setPassword(RedisPassword.of(password));
 
-    JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
-    jedisClientConfiguration.connectTimeout(Duration.ofSeconds(60));
+    JedisClientConfiguration jedisClientConfig = JedisClientConfiguration.builder()
+        .connectTimeout(Duration.ofSeconds(60))
+        .build();
 
-    return new JedisConnectionFactory(redisStandaloneConfig,
-        jedisClientConfiguration.build());
+    return new JedisConnectionFactory(redisStandaloneConfig, jedisClientConfig);
   }
 
   @Bean

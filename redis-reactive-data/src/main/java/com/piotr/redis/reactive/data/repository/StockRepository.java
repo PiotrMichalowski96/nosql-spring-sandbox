@@ -22,8 +22,9 @@ public class StockRepository {
   }
 
   public Mono<Stock> findById(Long id) {
-    return findAll().filter(stock -> Objects.equals(stock.getId(), id))
-        .last();
+    return findAll()
+        .filter(stock -> Objects.equals(stock.getId(), id))
+        .singleOrEmpty();
   }
 
   public Mono<Long> save(Stock stock) {

@@ -20,6 +20,7 @@
 
   <properties>
     <java.version>11</java.version>
+    <embedded.redis.version>0.7.3</embedded.redis.version>
   </properties>
 
   <dependencies>
@@ -36,6 +37,19 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>it.ozimov</groupId>
+      <artifactId>embedded-redis</artifactId>
+      <version>${embedded.redis.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+        </exclusion>
+      </exclusions>
+      <scope>test</scope>
     </dependency>
 
     <dependency>

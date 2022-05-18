@@ -1,5 +1,7 @@
-database:
+spring:
   redis:
-    hostname: localhost
+    database: 0
+    host: localhost
     port: 12000
     password: ${redis.password}
+    timeout: 60000

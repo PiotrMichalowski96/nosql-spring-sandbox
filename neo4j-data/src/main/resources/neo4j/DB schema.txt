@@ -1,0 +1,15 @@
+-----------------------------------------------------------------------------------------------------------
+create index User_userId for (u:User) on (u.userId)
+-----------------------------------------------------------------------------------------------------------
+NODES
+
+LOAD CSV FROM 'file:/C:/neo4j/node/users.csv' AS line FIELDTERMINATOR ';' CREATE (:User {userId: line[0], username: line[1], firstname: line[2], lastname: line[3], age: line[4]});
+
+-----------------------------------------------------------------------------------------------------------
+RELATIONS
+
+LOAD CSV FROM "file:/C:/neo4j/relation/isFollowing.csv" AS line FIELDTERMINATOR ';'
+	MATCH (follower:User {userId: line[0]}), (aUser:User {userId: line[1]})
+	CREATE (follower)-[:IsFollowing]->(aUser);
+
+-----------------------------------------------------------------------------------------------------------

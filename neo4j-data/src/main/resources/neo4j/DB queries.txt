@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------------------------------------
+//Finds all nodes and all relations
+
+MATCH (n)-[r]->(m)
+RETURN n,r,m;
+
+-------------------------------------------------------------------------------------------------------------
+//All node from given distance
+
+MATCH p = (u:User)<-[:IsFollowing *..2]->(:User {username: 'MelRog'})
+RETURN p;
+
+-------------------------------------------------------------------------------------------------------------
+//Finds shortest path between users
+
+MATCH (startNode:User {username: 'MelRog'}), (endNode:User {username: 'jesswhite'})
+MATCH p = shortestPath((startNode)-[:IsFollowing *]->(endNode))
+RETURN p;
+
+MATCH (startNode:User {username: 'MelRog'}), (endNode:User {username: 'jesswhite'})
+MATCH p = shortestPath((startNode)-[:IsFollowing *]->(endNode))
+RETURN length(p) as distance;

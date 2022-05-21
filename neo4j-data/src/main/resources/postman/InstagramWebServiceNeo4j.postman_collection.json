@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "a753af72-7cea-4ffa-807e-59f0f54084b9",
+		"name": "InstagramWebServiceNeo4j",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/instagram/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instagram",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/instagram/users/30",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instagram",
+						"users",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 99,\r\n    \"username\": \"Wierzbix\",\r\n    \"firstname\": \"Eba\",\r\n    \"lastname\": \"Wierzb\",\r\n    \"followingUsers\": [\r\n        {\r\n            \"userId\": 13,\r\n            \"username\": \"marygarcia123\",\r\n            \"firstname\": \"Mary\",\r\n            \"lastname\": \"Garcia\",\r\n            \"followingUsers\": []\r\n        },\r\n        {\r\n            \"userId\": 19,\r\n            \"username\": \"patrob77\",\r\n            \"firstname\": \"Patricia\",\r\n            \"lastname\": \"Roberts\",\r\n            \"followingUsers\": []\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/instagram/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instagram",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find shortest path between users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/instagram/users/path?startUsername=MelRog&endUsername=jesswhite",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instagram",
+						"users",
+						"path"
+					],
+					"query": [
+						{
+							"key": "startUsername",
+							"value": "MelRog"
+						},
+						{
+							"key": "endUsername",
+							"value": "jesswhite"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get following of following users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/instagram/users?followingDistance=1&username=MelRog",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instagram",
+						"users"
+					],
+					"query": [
+						{
+							"key": "followingDistance",
+							"value": "1"
+						},
+						{
+							"key": "username",
+							"value": "MelRog"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -3,6 +3,8 @@ package com.piotr.neo4j.data.service;
 import com.piotr.neo4j.data.domain.User;
 import com.piotr.neo4j.data.repository.InstagramUserRepository;
 import java.util.Collection;
+import java.util.Optional;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,14 @@ public class InstagramService {
    */
   public Long findShortestPathBetweenUsers(String startUsername, String endUsername) {
     return instagramUserRepository.findShortestFollowingPathBetweenUsers(startUsername, endUsername);
+  }
+
+  public User save(@NonNull User user) {
+    return instagramUserRepository.save(user);
+  }
+
+  public void delete(Long id) {
+    Optional.ofNullable(instagramUserRepository.findByUserId(id))
+        .ifPresent(instagramUserRepository::delete);
   }
 }

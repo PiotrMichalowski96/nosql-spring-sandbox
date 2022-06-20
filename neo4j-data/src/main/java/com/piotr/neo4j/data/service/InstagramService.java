@@ -26,7 +26,7 @@ public class InstagramService {
   }
 
   /**
-   * It retrieves number of users - number of nodes in shortest path between two nodes in graph
+   * It retrieves number of users - number of nodes in the shortest path between two nodes in graph
    */
   public Long findShortestPathBetweenUsers(String startUsername, String endUsername) {
     return instagramUserRepository.findShortestFollowingPathBetweenUsers(startUsername, endUsername);

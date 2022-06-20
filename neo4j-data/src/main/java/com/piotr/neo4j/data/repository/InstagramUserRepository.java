@@ -14,7 +14,7 @@ public interface InstagramUserRepository extends Neo4jRepository<User, Long> {
   Collection<User> findFollowersOfFollowersByUsername(@Param("username") String username);
 
   @Query("MATCH (startNode:User {username: $startUsername}), (endNode:User {username: $endUsername}) "
-      + "MATCH p = shortestPath((startNode)-[:IsFollowing *]->(endNode)) "
+      + "MATCH p = shortestPath((startNode)-[:IsFollowing *]-(endNode)) "
       + "RETURN length(p)")
   Long findShortestFollowingPathBetweenUsers(@Param("startUsername") String startUsername,
       @Param("endUsername") String endUsername);

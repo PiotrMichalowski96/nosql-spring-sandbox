@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "869b291f-82ff-45d4-9293-f5dbf4de9152",
+		"name": "StockWebService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create stock 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"ticker\":\"USD/JPY\",\"stockType\":\"Physical Currency\",\"exchange\":\"NASDAQ\",\"price\":114.8490,\"currency\":\"Japanese Yen\",\"volume\":768,\"stockTimestamp\":\"2022-02-17T22:12:32\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stock",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create stock 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":2,\"ticker\":\"AAPL\",\"stockType\":\"Common Stock\",\"exchange\":\"NASDAQ\",\"price\":165.7820,\"currency\":\"USD\",\"volume\":1000,\"stockTimestamp\":\"2022-02-11T20:49:48\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/stock",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get stock 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stock/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stock",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get stock 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stock/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stock",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete stock 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/stock/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stock",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

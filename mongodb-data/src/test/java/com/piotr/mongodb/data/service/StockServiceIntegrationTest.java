@@ -54,7 +54,7 @@ class StockServiceIntegrationTest {
     mongoTemplate.save(stock);
 
     //when
-    Stock actualStock = stockService.getStockById(id);
+    Stock actualStock = stockService.getStockById(id).get();
 
     //then
     assertThat(actualStock).isEqualTo(stock);
@@ -72,7 +72,8 @@ class StockServiceIntegrationTest {
     mongoTemplate.save(stock);
 
     //when
-    stockService.delete(id);
+    Stock stockToRemove = stockService.getStockById(id).get();
+    stockService.delete(stockToRemove);
     Stock searchedStock = mongoTemplate.findById(id, Stock.class);
 
     //then
